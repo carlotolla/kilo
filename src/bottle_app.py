@@ -31,15 +31,15 @@ def oi_mundo():
 def vs_mundo():
     return 'Tutorial Dois - Versão do sistema: {}'.format(Main().get_versao())
 
-@route('/<filename:re:.*\.py>')
+@route('/<filename:re:.*[.]py>')
 def py_mundo(filename):
     return static_file(filename, root='/home/carlotolla/dev/kilo/src', mimetype='text/python')
 
-@route('/doc/<filename:re:.*\.html>')
+@route('/doc/<filename:re:.*[.]html>')
 def doc_mundo(filename):
     return static_file(filename, root='/home/carlotolla/dev/kilo/docs/build/html', mimetype='text/html')
 
-@route('/doc/<filename:re:.*\.css>')
+@route('/doc/<filename:re:.*[.]css>')
 def css_mundo(filename):
     return static_file(filename, root='/home/carlotolla/dev/kilo/docs/build/html/', mimetype='text/css')
 
