@@ -21,7 +21,7 @@ from main import Main
 
 @route('/')
 def hello_world():
-    return 'Tutorial Dois - aprendendo Git e Bottle'
+    return static_file('index.html', root='/home/carlotolla/dev/kilo/src/', mimetype='text/html')
 
 @route('/oi')
 def oi_mundo():
@@ -30,6 +30,10 @@ def oi_mundo():
 @route('/vs')
 def vs_mundo():
     return 'Tutorial Dois - Versão do sistema: {}'.format(Main().get_versao())
+
+@route('/<filename:re:.*\.py>')
+def py_mundo(filename):
+    return static_file(filename, root='/home/carlotolla/dev/kilo/src', mimetype='text/python')
 
 @route('/doc/<filename:re:.*\.html>')
 def doc_mundo(filename):
