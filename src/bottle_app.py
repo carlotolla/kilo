@@ -16,11 +16,11 @@ Changelog
         Adiciona o gerenciador de chamadas http via bottle.
 
 """
-from bottle import default_app, route, static_file
+from bottle import default_app, route, static_file# , debug
 from main import Main
 import os
 
-BASEDIR = os.path.dirname(__file__)
+BASEDIR = os.path.abspath(os.path.dirname(__file__))
 PARDIR = os.path.abspath(os.path.join(BASEDIR, os.pardir))
 HTMLDIR = os.path.abspath(os.path.join(PARDIR, "docs", "build", "html"))
 @route('/')
@@ -44,6 +44,7 @@ def py_mundo(filename):
     
     	:param filename: O nome do arquivo.
     """
+    print("py_mundo", BASEDIR, filename)
     return static_file(filename, root=BASEDIR, mimetype='text/python')
 
 @route('/doc')
@@ -69,5 +70,11 @@ def css_mundo(filename):
     """
     return static_file(filename, root=HTMLDIR, mimetype='text/css')
 
+   
+# debug(True)
+
 application = default_app()
 
+
+if __name__ == "__main__":
+    print(BASEDIR, os.path.abspath(BASEDIR), PARDIR, HTMLDIR)
