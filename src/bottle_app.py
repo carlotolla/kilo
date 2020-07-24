@@ -18,30 +18,56 @@ Changelog
 """
 from bottle import default_app, route, static_file
 from main import Main
+import os
 
+BASEDIR = os.path.dirname(__file__)
+PARDIR = os.path.abspath(os.path.join(BASEDIR, os.pardir))
+HTMLDIR = os.path.abspath(os.path.join(PARDIR, "docs", "build", "html"))
 @route('/')
-def hello_world():
-    return static_file('index.html', root='/home/carlotolla/dev/kilo/src/', mimetype='text/html')
+def game_world():
+    """Roteia o caminho / para o jogo do quarto."""
+    return static_file('index.html', root=BASEDIR, mimetype='text/html')
 
 @route('/oi')
 def oi_mundo():
+    """Roteia o caminho / para o jogo do quarto."""
     return 'Tutorial Dois - ensaiando uma nova rota'
 
 @route('/vs')
 def vs_mundo():
+    """Roteia o caminho /vs para retornar a versão do sistema."""
     return 'Tutorial Dois - Versão do sistema: {}'.format(Main().get_versao())
 
 @route('/<filename:re:.*[.]py>')
 def py_mundo(filename):
-    return static_file(filename, root='/home/carlotolla/dev/kilo/src', mimetype='text/python')
+    """Roteia o caminho /<nome>.py para retornar arquivos python.
+    
+    	:param filename: O nome do arquivo.
+    """
+    return static_file(filename, root=BASEDIR, mimetype='text/python')
+
+@route('/doc')
+def docroot_mundo():
+    """Roteia o caminho /doc para a documentação."""
+    print ("docroot_mundo",HTMLDIR)
+    return static_file("index.html", root=HTMLDIR, mimetype='text/html')
 
 @route('/doc/<filename:re:.*[.]html>')
 def doc_mundo(filename):
-    return static_file(filename, root='/home/carlotolla/dev/kilo/docs/build/html', mimetype='text/html')
+    """Roteia o caminho /<nome>.html para retornar arquivos htmls.
+    
+    	:param filename: O nome do arquivo.
+    """
+    print ("doc_mundo",HTMLDIR)
+    return static_file(filename, root=HTMLDIR, mimetype='text/html')
 
 @route('/doc/<filename:re:.*[.]css>')
 def css_mundo(filename):
-    return static_file(filename, root='/home/carlotolla/dev/kilo/docs/build/html/', mimetype='text/css')
+    """Roteia o caminho /<nome>.css para retornar arquivos css.
+    
+    	:param filename: O nome do arquivo.
+    """
+    return static_file(filename, root=HTMLDIR, mimetype='text/css')
 
 application = default_app()
 
