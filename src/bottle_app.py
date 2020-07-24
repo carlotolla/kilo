@@ -77,4 +77,5 @@ application = default_app()
 
 
 if __name__ == "__main__":
-    print(BASEDIR, os.path.abspath(BASEDIR), PARDIR, HTMLDIR)
+    #print(BASEDIR, os.path.abspath(BASEDIR), PARDIR, HTMLDIR)
+    bottle.run(host='localhost', port=8000)

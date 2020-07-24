@@ -18,19 +18,19 @@ ADD . /var/www/kilowapp
 WORKDIR /var/www/kilowapp/src
 
 # Expose is NOT supported by Heroku
-# EXPOSE 8000
+EXPOSE $PORT
 
 # Run the image as a non-root user
 RUN adduser -D myuser
 USER myuser
 
-ARG port=80
+# ARG port=80
 
-ENV PORT=$port
+# ENV PORT=$port
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
 # CMD gunicorn --bind 0.0.0.0:$PORT wsgi
-CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "bottle_app:application"]
-#CMD gunicorn wsgi
+# CMD ["gunicorn"  , "-b", "0.0.0.0:8000", "bottle_app:application"]
+CMD gunicorn --bind 0.0.0.0:$PORT bottle_app
 # Set-up app folder.
 
