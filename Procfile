@@ -1,1 +1,1 @@
-web gunicorn bottle_app
+web gunicorn  --pythonpath src bottle_app
