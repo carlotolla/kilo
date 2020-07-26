@@ -21,9 +21,13 @@ from unittest import mock
 
 
 class TestQuarto(TestCase):
-    @mock.patch(vitollino.Inventario)
-    def setUp(self, inv):
-        import vitollino
+    @mock.patch("vitollino.main.Inventario")
+    @mock.patch("vitollino.main.Cena")
+    @mock.patch("vitollino.main.Elemento")
+    def setUp(self, inv, cen, elm):
+        # import vitollino
+        from quarto import JogoDoQuarto
+        # self.jq = JogoDoQuarto()
     
     def test_jogo(self):
         pass
