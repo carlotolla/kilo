@@ -32,7 +32,7 @@ Gerador de labirintos e jogos tipo *'novel'*.
 
 .. seealso::
 
-`Vitollino em Github <https://github.com/carlotolla/vitollino>`_
+    `Vitollino em Github <https://github.com/carlotolla/vitollino>`_
 
 """
 import json
@@ -410,10 +410,12 @@ INVENTARIO = Inventario()
 class Elemento_:
     """
     Um objeto de interação que é representado por uma imagem em uma cena.
+    
+    .. code:: python
 
-            papel = Elemento(
-             img="papel.png", tit="caderno de notas",
-             vai=pega_papel, style=dict(left=350, top=550, width=60))
+        papel = Elemento(
+            img="papel.png", tit="caderno de notas",
+            vai=pega_papel, style=dict(left=350, top=550, width=60))
 
 
     :param img: URL de uma imagem
@@ -489,10 +491,11 @@ class Elemento(Elemento_):
     """
     Um objeto de interação que é representado por uma imagem em uma cena.
 
+    .. code:: python
+
             papel = Elemento(
              img="papel.png", tit="caderno de notas",
              vai=pega_papel, style=dict(left=350, top=550, width=60))
-
 
     :param img: URL de uma imagem
     :param vai: função executada quando se clica no objeto
@@ -700,9 +703,13 @@ class Elemento(Elemento_):
 class Codigo(Elemento):
     """
     Um objeto de interação que é representado por uma trecho de código em uma cena.
-            exemplo = Codigo(
-             codigo="from anna import main", topo="Importando um módulo",
-             vai=testa_codigo, style=dict(left=350, top=550, width=60))
+
+    .. code:: python
+
+        exemplo = Codigo(
+            codigo="from anna import main", topo="Importando um módulo",
+            vai=testa_codigo, style=dict(left=350, top=550, width=60))
+
     :param codigo: O código de programa
     :param vai: função executada quando se clica no objeto
     :param style: dicionário com dimensões do objeto {"left": ..., "top": ..., width: ..., height: ...}
@@ -966,7 +973,8 @@ class Salao(Sala):
 class Cena:
     """
     Use para construir uma cena.
-    ::
+
+    .. code:: python
 
         from _spy.vitollino import Cena
 
